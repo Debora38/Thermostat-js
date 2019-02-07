@@ -1,0 +1,47 @@
+<script src="../src/thermostat.js"></script>
+<html>
+<head>
+<style>
+.item1 { grid-area: powersaving; }
+.item2 { grid-area: up; }
+.item3 { grid-area: main; }
+.item4 { grid-area: right; }
+.item5 { grid-area: PS; }
+.item6 { grid-area: down; }
+.item7 { grid-area: energy; }
+.item8 { grid-area: reset; }
+
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    'powersaving powersaving powersaving energy energy energy null'
+    'main main main main main main up'
+    'main main main main main main down'
+    'PS PS PS reset reset reset nothing';
+  grid-gap: 10px;
+  background-color: #2196F3;
+  padding: 10px;
+}
+
+.grid-container > div {
+  background-color: #FFFFFF;
+  text-align: center;
+  padding: 20px 0;
+  font-size: 30px;
+}
+</style>
+</head>
+<body>
+<center>
+<div class="grid-container">
+  <div class="item1">powersaving</div>
+  <div class="item2">Up</div>
+  <div class="item3">20</div>
+  <div class="item5">PS</div>
+  <div class="item6">Down</div>
+  <div class="item7">Energy</div>
+  <div class="item8">reset</div>
+</div>
+</center>
+</body>
+</html>
