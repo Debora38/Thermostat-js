@@ -23,4 +23,19 @@ describe("Thermostat", function() {
     expect( function(){ thermostat.decrease(11) } ).toThrow('Can\'t go under ' + thermostat._minTemperature);
   });
 
+  it('power saving mode is on my default', function() {
+    expect(thermostat.powerSaving).toEqual(true);
+  });
+
+  it('cant increase the temperature above 25 in power saving mode', function() {
+    thermostat.checkPowerSavingMode()
+    console.log(thermostat._MaxTemperature);
+    expect( function(){ thermostat.increase(6) } ).toThrow('Can\'t go above ' + thermostat._MaxTemperature);
+  });
+
+  it('cant increase the temperature above 32 not in power saving mode', function() {
+    thermostat.powerSavingOff() 
+    thermostat.checkPowerSavingMode()
+    expect( function(){ thermostat.increase(13) } ).toThrow('Can\'t go above ' + thermostat._MaxTemperature);
+  });
 });

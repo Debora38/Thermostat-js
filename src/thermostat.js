@@ -1,10 +1,17 @@
 function Thermostat() {
   this.temperature = 20;
   this._minTemperature = 10;
+  this.powerSaving = true;
+  this._MaxTemperature = 25;
 }
 
 Thermostat.prototype.increase = function(num) {
-  this.temperature += num;
+  this.checkPowerSavingMode();  
+  if(this.temperature + num <= this._MaxTemperature) {
+    this.temperature += num;
+  } else {
+    throw 'Can\'t go above ' + this._MaxTemperature;
+  };
 };
 
 Thermostat.prototype.decrease = function(num) {
@@ -14,3 +21,16 @@ Thermostat.prototype.decrease = function(num) {
     throw 'Can\'t go under ' + this._minTemperature;
   };
 };
+
+Thermostat.prototype.powerSavingOff = function() {
+  this._powerSaving = false;
+}
+
+Thermostat.prototype.checkPowerSavingMode = function() {
+  if (this.powerSaving) {
+    this._MaxTemperature = 25
+  }
+  else {
+    this._MaxTemperature = 32
+  }
+}
