@@ -1,15 +1,15 @@
-<script src="../src/thermostat.js"></script>
 <html>
 <head>
+
+
 <style>
-.item1 { grid-area: powersaving; }
-.item2 { grid-area: up; }
-.item3 { grid-area: main; }
-.item4 { grid-area: right; }
-.item5 { grid-area: PS; }
-.item6 { grid-area: down; }
-.item7 { grid-area: energy; }
-.item8 { grid-area: reset; }
+.powersaving { grid-area: powersaving; }
+.up { grid-area: up; }
+.temperature { grid-area: main; }
+.psbutton { grid-area: PSbutton; }
+.down { grid-area: down; }
+.energy { grid-area: energy; }
+.reset { grid-area: reset; }
 
 .grid-container {
   display: grid;
@@ -17,10 +17,12 @@
     'powersaving powersaving powersaving energy energy energy null'
     'main main main main main main up'
     'main main main main main main down'
-    'PS PS PS reset reset reset nothing';
+    'PSbutton PSbutton PSbutton reset reset reset nothing';
   grid-gap: 10px;
-  background-color: #2196F3;
+  background-color: #000000;
   padding: 10px;
+  width: 600px;
+  margin-top: 5%;
 }
 
 .grid-container > div {
@@ -29,19 +31,33 @@
   padding: 20px 0;
   font-size: 30px;
 }
+
+.button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  }
 </style>
 </head>
 <body>
 <center>
 <div class="grid-container">
-  <div class="item1">powersaving</div>
-  <div class="item2">Up</div>
-  <div class="item3">20</div>
-  <div class="item5">PS</div>
-  <div class="item6">Down</div>
-  <div class="item7">Energy</div>
-  <div class="item8">reset</div>
+  <div class="powersaving">powersaving</div>
+  <div class="up"><button class="button">Up</button></div>
+  <div class="temperature"></div>
+  <div class="psbutton"><button class="button">PSbutton</button></div>
+  <div class="down"><button class="button">Down</button></div>
+  <div class="energy">Energy</div>
+  <div class="reset"><button class="button">reset</button></div>
 </div>
 </center>
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="../src/thermostat.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
