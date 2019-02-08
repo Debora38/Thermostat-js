@@ -6,33 +6,33 @@ function Thermostat() {
   this._MaxTemperature = 25;
 }
 
-Thermostat.prototype.increase = function(num) {
+Thermostat.prototype.increase = function() {
   this.checkPowerSavingMode();
-  if(this.temperature + num <= this._MaxTemperature) {
-    this.temperature += num;
+  if(this.temperature + 1 <= this._MaxTemperature) {
+    this.temperature += 1;
   } else {
     throw 'Can\'t go above ' + this._MaxTemperature;
   };
 };
 
-Thermostat.prototype.decrease = function(num) {
-  if(this.temperature - num >= this._minTemperature) {
-    this.temperature -= num;
+Thermostat.prototype.decrease = function() {
+  if(this.temperature - 1 >= this._minTemperature) {
+    this.temperature -= 1;
   } else {
     throw 'Can\'t go under ' + this._minTemperature;
   };
 };
 
 Thermostat.prototype.powerSavingOff = function() {
-  this._powerSaving = false;
+  this.powerSaving = false;
 }
 
 Thermostat.prototype.checkPowerSavingMode = function() {
   if (this.powerSaving) {
-    this._MaxTemperature = 25
+    this._MaxTemperature = 25;
   }
   else {
-    this._MaxTemperature = 32
+    this._MaxTemperature = 32;
   };
 };
 

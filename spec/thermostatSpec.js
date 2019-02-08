@@ -10,17 +10,35 @@ describe("Thermostat", function() {
   });
 
   it('can increase the temperature', function() {
-    thermostat.increase(5);
+    thermostat.increase();
+    thermostat.increase();
+    thermostat.increase();
+    thermostat.increase();
+    thermostat.increase();
     expect(thermostat.temperature).toEqual(25);
   });
 
   it('can decrease the temperature', function() {
-    thermostat.decrease(5);
+    thermostat.decrease();
+    thermostat.decrease();
+    thermostat.decrease();
+    thermostat.decrease();
+    thermostat.decrease();
     expect(thermostat.temperature).toEqual(15);
   });
 
   it('does not allow to decrease the temperature less than 10', function() {
-    expect( function(){ thermostat.decrease(11) } ).toThrow('Can\'t go under ' + thermostat._minTemperature);
+    thermostat.decrease()
+    thermostat.decrease()
+    thermostat.decrease()
+    thermostat.decrease()
+    thermostat.decrease()
+    thermostat.decrease()
+    thermostat.decrease()
+    thermostat.decrease()
+    thermostat.decrease()
+    thermostat.decrease()
+    expect( function(){ thermostat.decrease() } ).toThrow('Can\'t go under ' + thermostat._minTemperature);
   });
 
   it('power saving mode is on my default', function() {
@@ -29,23 +47,45 @@ describe("Thermostat", function() {
 
   it('cant increase the temperature above 25 in power saving mode', function() {
     thermostat.checkPowerSavingMode()
-    expect( function(){ thermostat.increase(6) } ).toThrow('Can\'t go above ' + thermostat._MaxTemperature);
+    console.log(thermostat._MaxTemperature)
+    thermostat.increase()
+    thermostat.increase()
+    thermostat.increase()
+    thermostat.increase()
+    thermostat.increase()
+    expect( function(){ thermostat.increase() } ).toThrow('Can\'t go above ' + thermostat._MaxTemperature);
   });
 
   it('cant increase the temperature above 32 not in power saving mode', function() {
     thermostat.powerSavingOff()
     thermostat.checkPowerSavingMode()
-    expect( function(){ thermostat.increase(13) } ).toThrow('Can\'t go above ' + thermostat._MaxTemperature);
+    thermostat.increase()
+    thermostat.increase()
+    thermostat.increase()
+    thermostat.increase()
+    thermostat.increase()
+    thermostat.increase()
+    thermostat.increase()
+    thermostat.increase()
+    thermostat.increase()
+    thermostat.increase()
+    thermostat.increase()
+    thermostat.increase()
+    expect( function(){ thermostat.increase() } ).toThrow('Can\'t go above ' + thermostat._MaxTemperature);
   });
 
   it('can reset the temperature to default', function() {
-    thermostat.increase(3)
+    thermostat.increase()
+    thermostat.increase()
+    thermostat.increase()
     thermostat.reset()
     expect(thermostat.temperature).toEqual(thermostat._defaultTemperature)
   });
 
   it('should return low usage', function() {
-    thermostat.decrease(3)
+    thermostat.decrease()
+    thermostat.decrease()
+    thermostat.decrease()
     expect(thermostat.energyUsage()).toEqual('low-usage')
   });
 
@@ -54,7 +94,11 @@ describe("Thermostat", function() {
   });
 
   it('should return high usage', function() {
-    thermostat.increase(5)
+    thermostat.increase()
+    thermostat.increase()
+    thermostat.increase()
+    thermostat.increase()
+    thermostat.increase()
     expect(thermostat.energyUsage()).toEqual('high-usage')
   });
 });
