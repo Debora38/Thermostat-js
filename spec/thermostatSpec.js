@@ -6,7 +6,7 @@ describe("Thermostat", function() {
   });
 
   it("should be able to print default temperature", function() {
-    expect(thermostat.temperature).toEqual(20);
+    expect(thermostat.temperature).toEqual(thermostat._defaultTemperature);
   });
 
   it('can increase the temperature', function() {
