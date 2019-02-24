@@ -6,23 +6,27 @@
 .powersaving { grid-area: powersaving; }
 .up { grid-area: up; }
 .temperature { grid-area: main; }
+.celsius { grid-area: celsius; }
 .psbutton { grid-area: PSbutton; }
 .down { grid-area: down; }
 .energy { grid-area: energy; }
 .reset { grid-area: reset; }
+.null { grid-area: null; }
+.nothing { grid-area: nothing; }
 
 .grid-container {
   display: grid;
   grid-template-areas:
     'powersaving powersaving powersaving energy energy energy nothing'
-    'main main main main main main up'
-    'main main main main main main down'
+    'main main main celsius celsius celsius up'
+    'main main main celsius celsius celsius down'
     'PSbutton PSbutton PSbutton reset reset reset null';
   grid-gap: 1px;
-  background-color: #000000;
+  background-color: #FFFFFF;
   padding: 1px;
   width: 600px;
   margin-top: 5%;
+  border: 1px solid #000000;
 }
 
 .grid-container > div {
@@ -53,10 +57,11 @@
 <div class="grid-container">
   <div class='null'></div>
   <div class='nothing'></div>
-  <div class="powersaving">powersaving</div>
-  <div class="energy">Energy</div>
-  <div class="temperature" style="font-size:100px"></div>
-  <div class="psbutton"><button class="button">PSbutton</button></div>
+  <div class="powersaving" style="width: 263px;">powersaving</div>
+  <div class="energy" style="width: 260px;">Energy</div>
+  <div class="temperature" style="font-size:100px; text-align: right;"></div>
+  <div class="celsius" style="font-size:100px; text-align: left;">*C</div>
+  <div class="psbutton"><button class="button">Power Saving</button></div>
   <div class="up"><button class="button">+</button></div>
   <div class="down"><button class="button">-</button></div>
   <div class="reset"><button class="button">reset</button></div>
