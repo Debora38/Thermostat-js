@@ -5,8 +5,8 @@ describe("Thermostat", function() {
     thermostat = new Thermostat();
   });
 
-  it("should be able to play a Song", function() {
-    expect(thermostat.temperature).toEqual(20);
+  it("should be able to print default temperature", function() {
+    expect(thermostat.temperature).toEqual(thermostat._defaultTemperature);
   });
 
   it('can increase the temperature', function() {
