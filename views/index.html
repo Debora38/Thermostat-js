@@ -14,13 +14,13 @@
 .grid-container {
   display: grid;
   grid-template-areas:
-    'powersaving powersaving powersaving energy energy energy null'
+    'powersaving powersaving powersaving energy energy energy nothing'
     'main main main main main main up'
     'main main main main main main down'
-    'PSbutton PSbutton PSbutton reset reset reset nothing';
-  grid-gap: 10px;
+    'PSbutton PSbutton PSbutton reset reset reset null';
+  grid-gap: 1px;
   background-color: #000000;
-  padding: 10px;
+  padding: 1px;
   width: 600px;
   margin-top: 5%;
 }
@@ -29,17 +29,21 @@
   background-color: #FFFFFF;
   text-align: center;
   padding: 20px 0;
-  font-size: 30px;
+  font-family: Helvetica;
+  font-size: 20px;
 }
 
 .button {
-  background-color: #4CAF50;
-  border: none;
+  background-color: #2dabf9;
+  box-shadow:inset 0px 0px 13px 12px #295fff;
+  border-radius:7px;
+	border:1px solid #0b0e07;
   color: white;
-  padding: 15px 32px;
+  padding: 10px 32px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
+  font-family: Helvetica;
   font-size: 16px;
   }
 </style>
@@ -47,12 +51,14 @@
 <body>
 <center>
 <div class="grid-container">
+  <div class='null'></div>
+  <div class='nothing'></div>
   <div class="powersaving">powersaving</div>
-  <div class="up"><button class="button">Up</button></div>
-  <div class="temperature"></div>
-  <div class="psbutton"><button class="button">PSbutton</button></div>
-  <div class="down"><button class="button">Down</button></div>
   <div class="energy">Energy</div>
+  <div class="temperature" style="font-size:100px"></div>
+  <div class="psbutton"><button class="button">PSbutton</button></div>
+  <div class="up"><button class="button">+</button></div>
+  <div class="down"><button class="button">-</button></div>
   <div class="reset"><button class="button">reset</button></div>
 </div>
 </center>
