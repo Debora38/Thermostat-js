@@ -47,7 +47,6 @@ describe("Thermostat", function() {
 
   it('cant increase the temperature above 25 in power saving mode', function() {
     thermostat.checkPowerSavingMode()
-    console.log(thermostat._MaxTemperature)
     thermostat.increase()
     thermostat.increase()
     thermostat.increase()
