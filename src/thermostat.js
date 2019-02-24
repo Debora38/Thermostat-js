@@ -2,7 +2,7 @@ function Thermostat() {
   this._defaultTemperature = 20
   this.temperature = this._defaultTemperature;
   this._minTemperature = 10;
-  this.powerSaving = true;
+  this.powerSaving = 'PS ON';
   this._MaxTemperature = this._PSMaxTemperature;
   this._PSMaxTemperature = 25;
   this._PSOffMaxTemperature = 32;
@@ -27,18 +27,30 @@ Thermostat.prototype.decrease = function() {
   };
 };
 
-Thermostat.prototype.powerSavingOff = function() {
-  this.powerSaving = false;
+Thermostat.prototype.powerSavingOnOff = function() {
+  if (this.powerSaving === 'PS OFF'){
+    this.powerSaving = 'PS ON'
+  } else {
+    this.powerSaving = 'PS OFF';
+  }
+  this.checkPowerSavingMode();
 }
 
 Thermostat.prototype.checkPowerSavingMode = function() {
-  if (this.powerSaving) {
+  if (this.powerSaving.includes('ON')) {
     this._MaxTemperature = this._PSMaxTemperature
+    this.checkTemperature();
   }
   else {
     this._MaxTemperature = this._PSOffMaxTemperature
   };
 };
+
+Thermostat.prototype.checkTemperature = function(){
+  if (this.temperature > 25 && this.powerSaving.includes('ON')){
+    return this.temperature = 25;
+  }
+}
 
 Thermostat.prototype.reset = function () {
   this.temperature = this._defaultTemperature;

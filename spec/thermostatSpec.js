@@ -42,7 +42,7 @@ describe("Thermostat", function() {
   });
 
   it('power saving mode is on my default', function() {
-    expect(thermostat.powerSaving).toEqual(true);
+    expect(thermostat.powerSaving).toEqual('PS ON');
   });
 
   it('cant increase the temperature above 25 in power saving mode', function() {
@@ -56,7 +56,7 @@ describe("Thermostat", function() {
   });
 
   it('cant increase the temperature above 32 not in power saving mode', function() {
-    thermostat.powerSavingOff()
+    thermostat.powerSavingOnOff()
     thermostat.checkPowerSavingMode()
     thermostat.increase()
     thermostat.increase()
